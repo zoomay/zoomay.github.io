@@ -198,7 +198,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            Startseite
           </a>
         </li>
       
@@ -208,7 +208,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            Archiv
           </a>
         </li>
       
@@ -280,7 +280,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T01:15:13+08:00">
                 2017-05-23
@@ -319,8 +319,7 @@
       
         
           
-            <p><img src="" alt=""></p>
-<p>Invalid MEX-file ‘/usr/local/caffe/matlab/+caffe/private/caffe<em>.mexmaci64’:<br>dlopen(/usr/local/caffe/matlab/+caffe/private/caffe</em>.mexmaci64, 6):<br>Library not loaded: /usr/local/opt/libtiff/lib/libtiff.5.dylib_</p>
+            <p><img src="" alt=""><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">Invalid MEX-file <span class="string">'/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64'</span>:</div><div class="line">dlopen(/usr/<span class="built_in">local</span>/caffe/matlab/+caffe/private/caffe_.mexmaci64, 6): </div><div class="line">Library not loaded: /usr/<span class="built_in">local</span>/opt/libtiff/lib/libtiff.5.dylib_</div></pre></td></tr></table></figure></p>
 <p>原因：<br>matlab提供的libtiff，跟brew install的衝突，把matlab的移除，並重新鏈接<br>解決方法<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">cd</span> /Applications/MATLAB_R2016a.app/bin/maci64</div><div class="line">mkdir libs.bak</div><div class="line">mv libtiff.5.dylib libs.bak/</div><div class="line">ln <span class="_">-s</span> /usr/<span class="built_in">local</span>/opt/libtiff/lib/libtiff.5.dylib</div></pre></td></tr></table></figure></p>
 
           
@@ -394,7 +393,7 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">Veröffentlicht am</span>
               
               <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-05-23T00:14:37+08:00">
                 2017-05-23
@@ -522,7 +521,7 @@
             <div class="site-state-item site-state-posts">
               <a href="/archives">
                 <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">posts</span>
+                <span class="site-state-item-name">Artikel</span>
               </a>
             </div>
           
@@ -576,7 +575,7 @@
 
 
 <div class="powered-by">
-  Powered by <a class="theme-link" href="https://hexo.io">Hexo</a>
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
 </div>
 
 <div class="theme-info">
