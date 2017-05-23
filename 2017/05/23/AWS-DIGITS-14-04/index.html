@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能">
+<meta name="description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能  aws相關指令由本地連接aws的ssh相關指令。 連接aws： 下載密鑰文件 給密鑰文件權限：chmod 400 xxxx-key-pair.pem ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址">
 <meta property="og:type" content="article">
 <meta property="og:title" content="AWS+DIGITS+14.04">
 <meta property="og:url" content="http://yoursite.com/2017/05/23/AWS-DIGITS-14-04/index.html">
 <meta property="og:site_name" content="Junhao.H">
-<meta property="og:description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能">
-<meta property="og:updated_time" content="2017-05-23T23:00:39.000Z">
+<meta property="og:description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能  aws相關指令由本地連接aws的ssh相關指令。 連接aws： 下載密鑰文件 給密鑰文件權限：chmod 400 xxxx-key-pair.pem ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址">
+<meta property="og:updated_time" content="2017-05-23T23:03:00.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS+DIGITS+14.04">
-<meta name="twitter:description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能">
+<meta name="twitter:description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能  aws相關指令由本地連接aws的ssh相關指令。 連接aws： 下載密鑰文件 給密鑰文件權限：chmod 400 xxxx-key-pair.pem ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址">
 
 
 
@@ -350,12 +350,13 @@
         <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><blockquote>
 <p>本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能</p>
 </blockquote>
- <a id="more"></a>
 <h2 id="aws相關指令"><a href="#aws相關指令" class="headerlink" title="aws相關指令"></a>aws相關指令</h2><p>由本地連接aws的ssh相關指令。</p>
 <h3 id="連接aws："><a href="#連接aws：" class="headerlink" title="連接aws："></a>連接aws：</h3><ol>
 <li>下載密鑰文件</li>
 <li>給密鑰文件權限：chmod 400 xxxx-key-pair.pem</li>
-<li>ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址</li>
+<li><p>ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址</p>
+<a id="more"></a>
+</li>
 </ol>
 <h3 id="aws的上傳，下載文件："><a href="#aws的上傳，下載文件：" class="headerlink" title="aws的上傳，下載文件："></a>aws的上傳，下載文件：</h3><blockquote>
 <p>格式：<br>scp -i xxx-key-pair.pem 需要上傳的文件路徑 系統用戶名@ip地址:目的地路徑</p>

@@ -351,6 +351,11 @@
           <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><blockquote>
 <p>本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能</p>
 </blockquote>
+<h2 id="aws相關指令"><a href="#aws相關指令" class="headerlink" title="aws相關指令"></a>aws相關指令</h2><p>由本地連接aws的ssh相關指令。</p>
+<h3 id="連接aws："><a href="#連接aws：" class="headerlink" title="連接aws："></a>連接aws：</h3><ol>
+<li>下載密鑰文件</li>
+<li>給密鑰文件權限：chmod 400 xxxx-key-pair.pem</li>
+<li><p>ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/05/23/AWS-DIGITS-14-04/#more" rel="contents">
@@ -582,18 +587,16 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3> <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><p> ```bash<br>$ hexo new “My New Post”<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">More info: [Writing][5]</div><div class="line"></div><div class="line">### Run server</div><div class="line"></div><div class="line">``` bash</div><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a><br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/23/hello-world/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
