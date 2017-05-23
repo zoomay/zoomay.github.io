@@ -281,122 +281,6 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/24/test/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Junhao Huang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Junhao.H">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2017/05/24/test/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">發表於</span>
-              
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-05-24T04:59:54+08:00">
-                2017-05-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="The-Geek’s-Corner"><a href="#The-Geek’s-Corner" class="headerlink" title="The Geek’s Corner"></a>The Geek’s Corner</h2><p>Finally, there’s markup to either add <code>sample code</code> or <code>raw source code</code>. The former is indispensable for writing technical documentation, and the latter is really advanced stuff, with which you can add code that will be executed during export.</p>
-<p>You can also insert whole paragraphs of both code variants. Here is a truly advanced Swift code example – released under GPL:<br><figure class="highlight"><table><tr><td class="code"><pre><div class="line">let myString = "You are beautiful.</div><div class="line">print("Hello World. " + myString)</div><div class="line">scp -i /Users/junhao/Downloads/junhao_aws.pem " file path "  ubuntu@ec2-34-201-250-52.compute-1.amazonaws.com:" target path “</div></pre></td></tr></table></figure></p>
-<p>And here is an example of a Raw Source block, which inserts a table when exported as HTML (and just vanishes when exported as PDF):</p>
-<table border="1"><br>    <tr><th>City</th><th>Country</th><th>River</th></tr><br>    <tr><td>Hamburg</td><td>Hungaria</td><td>Hérault</td></tr><br>    <tr><td>Leipzig</td><td>Latvia</td><td>Llobregat</td></tr><br></table>
-
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/05/23/AWS-DIGITS-14-04/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -464,24 +348,16 @@
 
       
         
-          
-            <h1 id="Introduction"><a href="#Introduction" class="headerlink" title="Introduction"></a>Introduction</h1><blockquote>
+          <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><blockquote>
 <p>本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能</p>
 </blockquote>
-<h1 id="aws相關指令"><a href="#aws相關指令" class="headerlink" title="aws相關指令"></a>aws相關指令</h1><h3 id="連接aws："><a href="#連接aws：" class="headerlink" title="連接aws："></a>連接aws：</h3><ol>
-<li>下載密鑰文件</li>
-<li>給密鑰文件權限：chmod 400 xxxx-key-pair.pem</li>
-<li>ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址</li>
-</ol>
-<h3 id="aws的上傳，下載文件："><a href="#aws的上傳，下載文件：" class="headerlink" title="aws的上傳，下載文件："></a>aws的上傳，下載文件：</h3><blockquote>
-<p>格式：<br>scp -i xxx-key-pair.pem 需要上傳的文件路徑 系統用戶名@ip地址:目的地路徑<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">scp -i /Users/junhao/Downloads/junhao_aws.pem <span class="string">" file path "</span>  ubuntu@ec2-34-201-250-52.compute-1.amazonaws.com:<span class="string">" target path "</span></div></pre></td></tr></table></figure></p>
-</blockquote>
-<h1 id="與AWS連線"><a href="#與AWS連線" class="headerlink" title="與AWS連線"></a>與AWS連線</h1><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo su   <span class="comment">#切換成root</span></div><div class="line">lspci | grep -i nvidia   <span class="comment">#檢查GPU </span></div><div class="line">uname -m &amp;&amp; cat /etc/*release   <span class="comment">#檢查OS</span></div><div class="line">sudo apt-get update &amp;&amp; sudo apt-get -y upgrade</div><div class="line">sudo apt-get install -y linux-image-extra-uname -r</div><div class="line">sudo add-apt-repository ppa:graphics-drivers/ppa</div><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install nvidia-375 nvidia-settings</div></pre></td></tr></table></figure>
-<h4 id="For-Ubuntu-14-04"><a href="#For-Ubuntu-14-04" class="headerlink" title="For Ubuntu 14.04"></a>For Ubuntu 14.04</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">CUDA_REPO_PKG=http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1404/x86_64/cuda-repo-ubuntu1404_8.0.61-1_amd64.deb</div><div class="line">ML_REPO_PKG=http://developer.download.nvidia.com/compute/machine-learning/repos/ubuntu1404/x86_64/nvidia-machine-learning-repo-ubuntu1404_4.0-2_amd64.deb</div></pre></td></tr></table></figure>
-<h4 id="Install-repo-packages"><a href="#Install-repo-packages" class="headerlink" title="Install repo packages"></a>Install repo packages</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">wget <span class="string">"<span class="variable">$CUDA_REPO_PKG</span>"</span> -O /tmp/cuda-repo.deb &amp;&amp; sudo dpkg -i /tmp/cuda-repo.deb &amp;&amp; rm <span class="_">-f</span> /tmp/cuda-repo.deb</div><div class="line">wget <span class="string">"<span class="variable">$ML_REPO_PKG</span>"</span> -O /tmp/ml-repo.deb &amp;&amp; sudo dpkg -i /tmp/ml-repo.deb &amp;&amp; rm <span class="_">-f</span> /tmp/ml-repo.deb</div></pre></td></tr></table></figure>
-<h4 id="Install-DIGITS"><a href="#Install-DIGITS" class="headerlink" title="Install DIGITS"></a>Install DIGITS</h4><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">sudo apt-get update</div><div class="line">sudo apt-get install digits</div></pre></td></tr></table></figure>
-
-          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/23/AWS-DIGITS-14-04/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -590,11 +466,14 @@
 
       
         
-          
-            <p><img src="" alt=""><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Invalid MEX-file <span class="string">'/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64'</span>:</div><div class="line">dlopen(/usr/<span class="built_in">local</span>/caffe/matlab/+caffe/private/caffe_.mexmaci64, 6): </div><div class="line">Library not loaded: /usr/<span class="built_in">local</span>/opt/libtiff/lib/libtiff.5.dylib_</div></pre></td></tr></table></figure></p>
-<p>原因：<br>matlab提供的libtiff，跟brew install的衝突，把matlab的移除，並重新鏈接<br>解決方法<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> /Applications/MATLAB_R2016a.app/bin/maci64</div><div class="line">mkdir libs.bak</div><div class="line">mv libtiff.5.dylib libs.bak/</div><div class="line">ln <span class="_">-s</span> /usr/<span class="built_in">local</span>/opt/libtiff/lib/libtiff.5.dylib</div></pre></td></tr></table></figure></p>
-
-          
+          <p><img src="" alt=""><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Invalid MEX-file <span class="string">'/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64'</span>:</div><div class="line">dlopen(/usr/<span class="built_in">local</span>/caffe/matlab/+caffe/private/caffe_.mexmaci64, 6): </div><div class="line">Library not loaded: /usr/<span class="built_in">local</span>/opt/libtiff/lib/libtiff.5.dylib_</div></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/23/First-Blog/#more" rel="contents">
+              閱讀全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -792,7 +671,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -845,17 +724,6 @@
   <span class="author" itemprop="copyrightHolder">Junhao Huang</span>
 </div>
 
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
-</div>
-
-<div class="theme-info">
-  主題 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
 
 
         

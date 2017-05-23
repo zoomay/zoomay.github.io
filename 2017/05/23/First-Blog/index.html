@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/23/First-Blog/index.html">
 <meta property="og:site_name" content="Junhao.H">
 <meta property="og:description" content="Invalid MEX-file &apos;/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64&apos;:dlopen(/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64, 6): Library not loaded: /usr/local/opt/libtiff/lib/libtiff.5.">
-<meta property="og:updated_time" content="2017-05-22T17:28:28.000Z">
+<meta property="og:updated_time" content="2017-05-23T22:59:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="First Blog">
 <meta name="twitter:description" content="Invalid MEX-file &apos;/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64&apos;:dlopen(/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64, 6): Library not loaded: /usr/local/opt/libtiff/lib/libtiff.5.">
@@ -348,6 +348,7 @@
 
       
         <p><img src="" alt=""><br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Invalid MEX-file <span class="string">'/usr/local/caffe/matlab/+caffe/private/caffe_.mexmaci64'</span>:</div><div class="line">dlopen(/usr/<span class="built_in">local</span>/caffe/matlab/+caffe/private/caffe_.mexmaci64, 6): </div><div class="line">Library not loaded: /usr/<span class="built_in">local</span>/opt/libtiff/lib/libtiff.5.dylib_</div></pre></td></tr></table></figure></p>
+ <a id="more"></a>
 <p>原因：<br>matlab提供的libtiff，跟brew install的衝突，把matlab的移除，並重新鏈接<br>解決方法<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="built_in">cd</span> /Applications/MATLAB_R2016a.app/bin/maci64</div><div class="line">mkdir libs.bak</div><div class="line">mv libtiff.5.dylib libs.bak/</div><div class="line">ln <span class="_">-s</span> /usr/<span class="built_in">local</span>/opt/libtiff/lib/libtiff.5.dylib</div></pre></td></tr></table></figure></p>
 
       
@@ -460,7 +461,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives">
-                <span class="site-state-item-count">4</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">文章</span>
               </a>
             </div>
@@ -513,17 +514,6 @@
   <span class="author" itemprop="copyrightHolder">Junhao Huang</span>
 </div>
 
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 強力驅動
-</div>
-
-<div class="theme-info">
-  主題 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Mist
-  </a>
-</div>
 
 
         
