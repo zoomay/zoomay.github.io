@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/05/23/AWS-DIGITS-14-04/index.html">
 <meta property="og:site_name" content="Junhao.H">
 <meta property="og:description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能  aws相關指令由本地連接aws的ssh相關指令。  連接aws：   下載密鑰文件 給密鑰文件權限：chmod 400 xxxx-key-pair.pem ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址">
-<meta property="og:updated_time" content="2017-05-26T07:12:02.000Z">
+<meta property="og:updated_time" content="2017-05-26T08:55:21.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="AWS+DIGITS+14.04">
 <meta name="twitter:description" content="Intro. 本篇blog紀錄如何在AWS上部署DIGITS，來實現深度學習的功能  aws相關指令由本地連接aws的ssh相關指令。  連接aws：   下載密鑰文件 給密鑰文件權限：chmod 400 xxxx-key-pair.pem ssh連接：ssh -i xxxx-key-pair.pem 系統用戶名@ip地址">
@@ -361,10 +361,13 @@
 </ol>
 <a id="more"></a>
 <ul>
-<li>aws的上傳，下載文件：<blockquote>
+<li><p>aws的上傳，下載文件：</p>
+<blockquote>
 <p>格式：<br>scp -i xxx-key-pair.pem 需要上傳的文件路徑 系統用戶名@ip地址:目的地路徑</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">scp -i /Users/junhao/Downloads/junhao_aws.pem <span class="string">" file path "</span>  ubuntu@ec2-34-201-250-52.compute-1.amazonaws.com:<span class="string">" target path "</span></div></pre></td></tr></table></figure>
 </blockquote>
+</li>
+<li><p>Linux send to 65400 port<br><strong>注意-P 是大寫</strong><br><code>scp –P 8023 /var/www/html/* admin@ccsh.no-ip.tw:/home/data/</code></p>
 </li>
 </ul>
 <hr>
