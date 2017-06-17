@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/17/macos10-12-anaconda-caffe-matlab/index.html">
 <meta property="og:site_name" content="Junhao.H">
 <meta property="og:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffebuild with Anaconda python2.7 , opencv 2 and Matlab 2016b .">
-<meta property="og:updated_time" content="2017-06-17T08:43:03.000Z">
+<meta property="og:updated_time" content="2017-06-17T08:46:46.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos10.12+anaconda+caffe+matlab">
 <meta name="twitter:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffebuild with Anaconda python2.7 , opencv 2 and Matlab 2016b .">
@@ -369,11 +369,14 @@
 <h3 id="編譯caffe"><a href="#編譯caffe" class="headerlink" title="編譯caffe"></a>編譯caffe</h3><p>修改完成後<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">make all -j4</div><div class="line">make test -j4</div><div class="line">make runtest -j4</div><div class="line">make matcaffe</div></pre></td></tr></table></figure></p>
 <hr>
 <h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><blockquote>
-<p>由於caffe 的dependency很多，建議找一個月內的教程來安裝，避免某一個dependency版本與caffe編譯衝突，小編依照半年前自己紀錄的教程來安裝，發現一堆坑，後來將boost版本改為1.59，用opencv2，才順利解決。<br><strong>編譯期間會有很多問題，只能慢慢地找出問題。</strong><br>Runtest 可能會報錯<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">出错：make runtest</div><div class="line"></div><div class="line">.build_release/tools/caffe</div><div class="line"></div><div class="line">dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib</div><div class="line"></div><div class="line">  Referenced from: /Users/work/gitclone/caffe/.build_release/tools/caffe</div><div class="line"></div><div class="line">  Reason: image not found</div><div class="line"></div><div class="line">make: *** [runtest] Abort trap: 6</div></pre></td></tr></table></figure></p>
+<p>由於caffe 的dependency很多，建議找一個月內的教程來安裝，避免某一個dependency版本與caffe編譯衝突，小編依照半年前自己紀錄的教程來安裝，發現一堆坑，後來將boost版本改為1.59，用opencv2，才順利解決。</p>
 </blockquote>
+<p><strong>編譯期間會有很多問題，只能慢慢google，並解決。</strong></p>
+<p>Runtest 可能會報錯<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">出错：make runtest</div><div class="line"></div><div class="line">.build_release/tools/caffe</div><div class="line"></div><div class="line">dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib</div><div class="line"></div><div class="line">  Referenced from: /Users/work/gitclone/caffe/.build_release/tools/caffe</div><div class="line"></div><div class="line">  Reason: image not found</div><div class="line"></div><div class="line">make: *** [runtest] Abort trap: 6</div></pre></td></tr></table></figure></p>
 <p>原因是沒有添加正確的@rpath，需要手動更改，如下(需改為自己的路徑)<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">install_name_tool -add_rpath &apos;/Users/junhao/anaconda/lib&apos;  /Users/junhao/gitclone/caffe/.build_release/tools/caffe</div></pre></td></tr></table></figure></p>
 <p>繼續出錯<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib</div><div class="line"></div><div class="line">  Referenced from: /Users/work/gitclone/caffe/.build_release/test/test_all.testbin</div><div class="line"></div><div class="line">  Reason: image not found</div><div class="line"></div><div class="line">make: *** [runtest] Abort trap: 6</div></pre></td></tr></table></figure></p>
-<p> 一樣的問題，再度加上正確的@rpath<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">install_name_tool -add_rpath &apos;/Users/junhao/anaconda/lib&apos;  /Users/work/gitclone/caffe/.build_release/test/test_all.testbin</div></pre></td></tr></table></figure></p>
+<p> 一樣的問題，再度手動加上正確的@rpath<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">install_name_tool -add_rpath &apos;/Users/junhao/anaconda/lib&apos;  /Users/work/gitclone/caffe/.build_release/test/test_all.testbin</div></pre></td></tr></table></figure></p>
+<p>最後成功的<code>make runtest</code><br>再<code>make matcaffe</code><br>就成功了。</p>
 
       
     </div>
