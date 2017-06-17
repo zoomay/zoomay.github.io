@@ -90,13 +90,16 @@
 
 
 
+<meta name="description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffebuild with Anaconda python2.7 , opencv 2 and Matlab 2016b .  Install Dependency至官網安裝anaconda使用Homebrew 安裝librarybrew install -vd snappy leveldb gflags glog szip lmdb">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macos10.12+anaconda+caffe+matlab">
 <meta property="og:url" content="http://yoursite.com/2017/06/17/macos10-12-anaconda-caffe-matlab/index.html">
 <meta property="og:site_name" content="Junhao.H">
-<meta property="og:updated_time" content="2017-06-17T07:02:22.000Z">
+<meta property="og:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffebuild with Anaconda python2.7 , opencv 2 and Matlab 2016b .  Install Dependency至官網安裝anaconda使用Homebrew 安裝librarybrew install -vd snappy leveldb gflags glog szip lmdb">
+<meta property="og:updated_time" content="2017-06-17T08:19:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos10.12+anaconda+caffe+matlab">
+<meta name="twitter:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffebuild with Anaconda python2.7 , opencv 2 and Matlab 2016b .  Install Dependency至官網安裝anaconda使用Homebrew 安裝librarybrew install -vd snappy leveldb gflags glog szip lmdb">
 
 
 
@@ -344,7 +347,23 @@
       
 
       
-        
+        <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><blockquote>
+<p>本篇blog紀錄在macOS10.12上，部署Caffe<br>build with Anaconda python2.7 , opencv 2 and Matlab 2016b .</p>
+</blockquote>
+<h2 id="Install-Dependency"><a href="#Install-Dependency" class="headerlink" title="Install Dependency"></a>Install Dependency</h2><p>至官網安裝anaconda<br>使用Homebrew 安裝library<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew install -vd snappy leveldb gflags glog szip lmdb</div><div class="line">brew tap homebrew/science</div><div class="line">brew install opencv</div></pre></td></tr></table></figure></p>
+<p>hdf5使用anaconda的</p>
+<p>安裝1.59版本的boost，才能正常編譯<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew search boost </div><div class="line">boost                              boost@1.55</div><div class="line">boost-bcp                          boost@1.57</div><div class="line">boost-build                        boost@1.59 ✔</div><div class="line">boost-mpi                          boost@1.60</div><div class="line">boost-python                       homebrew/science/boost-compute</div><div class="line">boost-python@1.59 ✔</div><div class="line"></div><div class="line">brew install --build-from-source -vd boost@1.59 boost-python@1.59 </div><div class="line">brew link --force boost@1.59</div></pre></td></tr></table></figure></p>
+<p>Caffe中把某些依賴庫所在的文件夾名字限定為boost，可以將/usr/local/opt/boost@1.59，改名為/usr/local/opt/boost。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew install --build-from-source --with-python -vd protobuf</div></pre></td></tr></table></figure>
+<h2 id="Install-Caffe"><a href="#Install-Caffe" class="headerlink" title="Install Caffe"></a>Install Caffe</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd (安裝目的地)</div><div class="line">git clone https://github.com/BVLC/caffe.git</div><div class="line">cd caffe</div><div class="line">cp Makefile.config.example Makefile.config</div></pre></td></tr></table></figure>
+<h3 id="修改Makefile-config"><a href="#修改Makefile-config" class="headerlink" title="修改Makefile.config"></a>修改Makefile.config</h3><p>注意這邊要修改的是Makefile.config，不是Makefile.config.example<br>打開 Makefile.config</p>
+<p>由於沒有GPU，只用CPU跑，故要去掉cpu only的註解<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># CPU-only switch (uncomment to build without GPU support).  </div><div class="line">CPU_ONLY := 1</div></pre></td></tr></table></figure></p>
+<p>修改matlab路徑<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATLAB_DIR := /Applications/MATLAB_R2016b.app</div></pre></td></tr></table></figure></p>
+<p>因為要使用anaconda的python，所以這邊要去掉anaconda註解，並修改anaconda的正確安裝位置，並把原本的PYTHON INCLUDE註解掉，避免路徑衝突。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># NOTE: this is required only if you will compile the python interface.</div><div class="line"># We need to be able to find Python.h and numpy/arrayobject.h.</div><div class="line"># PYTHON_INCLUDE := /usr/include/python2.7 \</div><div class="line"># 		/usr/lib/python2.7/dist-packages/numpy/core/include</div><div class="line"></div><div class="line">ANACONDA_HOME := $(HOME)/anaconda</div><div class="line">PYTHON_INCLUDE := $(ANACONDA_HOME)/include \</div><div class="line">		$(ANACONDA_HOME)/include/python2.7 \</div><div class="line">		$(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include</div></pre></td></tr></table></figure></p>
+<p>使用 anaconda python 的library<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># We need to be able to find libpythonX.X.so or .dylib.</div><div class="line"># PYTHON_LIB := /usr/lib</div><div class="line">PYTHON_LIB := $(ANACONDA_HOME)/lib</div></pre></td></tr></table></figure></p>
+<p>注意，如果要編譯Matlab的接口，要在LIBRARY DIR這邊加入maci64的路徑，尤其各個路徑排列順序要對，如下所示<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># Whatever else you find you need goes here.</div><div class="line">INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include</div><div class="line">LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /Applications/MATLAB_R2016b.app/bin/maci64 /usr/lib</div></pre></td></tr></table></figure></p>
+<h3 id="編譯caffe"><a href="#編譯caffe" class="headerlink" title="編譯caffe"></a>編譯caffe</h3><p>修改完成後<br>```<br>make all -j4<br>make test -j4<br>make runtest -j4<br>make matcaffe</p>
+
       
     </div>
 
@@ -435,8 +454,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -480,6 +508,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Dependency"><span class="nav-number">1.1.</span> <span class="nav-text">Install Dependency</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Caffe"><span class="nav-number">1.2.</span> <span class="nav-text">Install Caffe</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#修改Makefile-config"><span class="nav-number">1.2.1.</span> <span class="nav-text">修改Makefile.config</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯caffe"><span class="nav-number">1.2.2.</span> <span class="nav-text">編譯caffe</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
