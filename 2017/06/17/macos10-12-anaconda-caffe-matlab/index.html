@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/17/macos10-12-anaconda-caffe-matlab/index.html">
 <meta property="og:site_name" content="Junhao.H">
 <meta property="og:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
-<meta property="og:updated_time" content="2017-06-18T19:44:24.000Z">
+<meta property="og:updated_time" content="2017-06-18T19:53:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos10.12 + caffe + matlab">
 <meta name="twitter:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
@@ -361,7 +361,9 @@
 </blockquote>
 <a id="more"></a>
 <h2 id="Install-Dependency"><a href="#Install-Dependency" class="headerlink" title="Install Dependency"></a>Install Dependency</h2><p>至官網安裝anaconda<br>使用Homebrew 安裝library<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew install -vd snappy leveldb gflags glog szip lmdb</div><div class="line">brew tap homebrew/science</div><div class="line">brew install opencv3 hdf5</div><div class="line">brew link opencv3 --force</div></pre></td></tr></table></figure></p>
-<p><em>可以使用anaconda的 hdf5，不用brew install hdf5</em><br>更新：使用brew install hdf5 比較不會有link不到的問題<br><div class="note warning"><p>「坑」opencv3 是keg only，記得要link</p>
+<p><em>可以使用anaconda的 hdf5，不用brew install hdf5</em></p>
+<p>\</p><p id="div-border-top-green" \="">这是带颜色的文本框\</p>
+<p>更新：使用brew install hdf5 比較不會有link不到的問題<br><div class="note warning"><p>「坑」opencv3 是keg only，記得要link</p>
 </div>
 <div class="note info"><p>「坑」建議安裝1.59版本的boost，才能正常編譯 </p>
 </div><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew search boost </div><div class="line"></div><div class="line">    boost                              boost@1.55</div><div class="line">    boost-bcp                          boost@1.57</div><div class="line">    boost-build                        boost@1.59 ✔</div><div class="line">    boost-mpi                          boost@1.60</div><div class="line">    boost-python                       homebrew/science/boost-compute</div><div class="line">    boost-python@1.59 ✔</div><div class="line"> </div><div class="line">brew install --build-from-source -vd boost@1.59 boost-python@1.59 </div><div class="line">brew link --force boost@1.59 </div></pre></td></tr></table></figure></p>
