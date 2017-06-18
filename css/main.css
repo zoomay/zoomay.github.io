@@ -1695,7 +1695,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #24d205;
+  background: #ffe3b4;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2793,14 +2793,13 @@ hr {
 .link-blue:hover {
   color: #f00;
 }
-.code {
+code {
   color: #fff;
   background: #5cb85c;
 }
 .posts-expand .post-body img {
   margin: 0 auto;
 }
-下载样式,
 a#download {
   display: inline-block;
   padding: 0 10px;
@@ -2811,13 +2810,10 @@ a#download {
   transition: all 0.5s ease;
   font-weight: bold;
 }
-下载样式:hover,
 a#download:hover {
   background: #000;
   color: #fff;
 }
-*
-阅读全文样式,
 .post-more-link .btn {
   position: relative;
   border: 2px solid #000;
@@ -2827,12 +2823,10 @@ a#download:hover {
   background: transparent;
   transition: all 0.5s ease;
 }
-阅读全文样式:hover,
 .post-more-link .btn:hover {
   background: #000;
   color: #eee;
 }
-*
 span#inline-yellow {
   display: inline;
   padding: 0.2em 0.6em 0.3em;
