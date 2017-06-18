@@ -1695,7 +1695,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #2609c1;
+  background: #24d205;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -2793,7 +2793,7 @@ hr {
 .link-blue:hover {
   color: #f00;
 }
-code {
+.code {
   color: #fff;
   background: #5cb85c;
 }
