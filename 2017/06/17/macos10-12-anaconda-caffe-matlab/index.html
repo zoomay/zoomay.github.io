@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="# Intro. &amp;gt; 本篇blog紀錄在macOS10.12上，部署Caffe  &amp;gt;  &amp;gt; build with Anaconda python2.7 , **opencv3** and Matlab 2016b .">
+<meta name="description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
 <meta property="og:type" content="article">
 <meta property="og:title" content="macos10.12 + caffe + matlab">
 <meta property="og:url" content="http://yoursite.com/2017/06/17/macos10-12-anaconda-caffe-matlab/index.html">
 <meta property="og:site_name" content="Junhao.H">
-<meta property="og:description" content="# Intro. &amp;gt; 本篇blog紀錄在macOS10.12上，部署Caffe  &amp;gt;  &amp;gt; build with Anaconda python2.7 , **opencv3** and Matlab 2016b .">
-<meta property="og:updated_time" content="2017-06-18T19:59:26.000Z">
+<meta property="og:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
+<meta property="og:updated_time" content="2017-06-18T20:02:11.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos10.12 + caffe + matlab">
-<meta name="twitter:description" content="# Intro. &amp;gt; 本篇blog紀錄在macOS10.12上，部署Caffe  &amp;gt;  &amp;gt; build with Anaconda python2.7 , **opencv3** and Matlab 2016b .">
+<meta name="twitter:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
 
 
 
@@ -355,127 +355,36 @@
       
 
       
-        
-# Intro.
-> 本篇blog紀錄在macOS10.12上，部署Caffe 
-> 
-> build with Anaconda python2.7 , **opencv3** and Matlab 2016b .
-
-
+        <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><blockquote>
+<p>本篇blog紀錄在macOS10.12上，部署Caffe </p>
+<p>build with Anaconda python2.7 , <strong>opencv3</strong> and Matlab 2016b .</p>
+</blockquote>
 <a id="more"></a>
+<h2 id="Install-Dependency"><a href="#Install-Dependency" class="headerlink" title="Install Dependency"></a>Install Dependency</h2><p>至官網安裝anaconda<br>使用Homebrew 安裝library<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew install -vd snappy leveldb gflags glog szip lmdb</div><div class="line">brew tap homebrew/science</div><div class="line">brew install opencv3 hdf5</div><div class="line">brew link opencv3 --force</div></pre></td></tr></table></figure></p>
+<p><em>可以使用anaconda的 hdf5，不用brew install hdf5</em><br>更新：使用brew install hdf5 比較不會有link不到的問題<br>\</p><p id="div-border-left-red" \=""> 「坑」opencv3 是keg only，記得要link\<br>\</p><p id="div-border-left-yellow" \="">「坑」建議安裝1.59版本的boost，才能正常編譯 \<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew search boost </div><div class="line"></div><div class="line">    boost                              boost@1.55</div><div class="line">    boost-bcp                          boost@1.57</div><div class="line">    boost-build                        boost@1.59 ✔</div><div class="line">    boost-mpi                          boost@1.60</div><div class="line">    boost-python                       homebrew/science/boost-compute</div><div class="line">    boost-python@1.59 ✔</div><div class="line"> </div><div class="line">brew install --build-from-source -vd boost@1.59 boost-python@1.59 </div><div class="line">brew link --force boost@1.59 </div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line"></div><div class="line"></div><div class="line">Caffe中把某些依賴庫所在的文件夾名字限定為boost，可以將/usr/local/opt/boost@1.59，改名為/usr/local/opt/boost。</div></pre></td></tr></table></figure></p>
+<p>brew install –build-from-source –with-python -vd protobuf<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">---- </div><div class="line"></div><div class="line">## Install Caffe</div></pre></td></tr></table></figure></p>
+<p>cd (安裝目的地)<br>git clone <a href="https://github.com/BVLC/caffe.git" target="_blank" rel="external">https://github.com/BVLC/caffe.git</a><br>cd caffe<br>cp Makefile.config.example Makefile.config<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">### 修改Makefile.config</div><div class="line">&gt; 注意這邊要修改的是`Makefile.config`，不是`Makefile.config.example`</div><div class="line">&gt; 打開 `Makefile.config`客製化編譯環境</div><div class="line"></div><div class="line">由於macbook沒有GPU，只用CPU跑，故要去掉cpu only的註解</div></pre></td></tr></table></figure></p>
+<h1 id="CPU-only-switch-uncomment-to-build-without-GPU-support"><a href="#CPU-only-switch-uncomment-to-build-without-GPU-support" class="headerlink" title="CPU-only switch (uncomment to build without GPU support)."></a>CPU-only switch (uncomment to build without GPU support).</h1><p>CPU_ONLY := 1<br>```<br><strong>「坑」註解掉USE LEVELDB := 0 才不會在最後編譯matlab接口的時候出錯</strong><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># uncomment to disable IO dependencies and corresponding data layers</div><div class="line"></div><div class="line"># USE_OPENCV := 0</div><div class="line">USE_LEVELDB := 0</div><div class="line"># USE_LMDB := 0</div></pre></td></tr></table></figure></p>
+<p>使用opencv3，故要註解掉此行<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># Uncomment if you&apos;re using OpenCV 3</div><div class="line">OPENCV_VERSION := 3</div></pre></td></tr></table></figure></p>
+<p>有些教學會推薦使用openblas，或是用intel的MKL，但我這邊就用預設的，若有改變記得將BLAS:=改為自己使用的BLAS<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># BLAS choice:</div><div class="line"># atlas for ATLAS (default)</div><div class="line"># mkl for MKL</div><div class="line"># open for OpenBlas</div><div class="line"></div><div class="line">BLAS := atlas</div></pre></td></tr></table></figure></p>
+<p>去掉matlab註解，並修改matlab路徑，我是2016b<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATLAB_DIR := /Applications/MATLAB_R2016b.app</div></pre></td></tr></table></figure></p>
+<p>因為要使用anaconda的python，所以這邊要去掉anaconda註解，並修改anaconda的正確安裝位置，並把原本的PYTHON INCLUDE註解掉，避免路徑衝突。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># NOTE: this is required only if you will compile the python interface.</div><div class="line"># We need to be able to find Python.h and numpy/arrayobject.h.</div><div class="line"></div><div class="line"># PYTHON_INCLUDE := /usr/include/python2.7 \</div><div class="line">#       /usr/lib/python2.7/dist-packages/numpy/core/include</div><div class="line"></div><div class="line">ANACONDA_HOME := $(HOME)/anaconda</div><div class="line">PYTHON_INCLUDE := $(ANACONDA_HOME)/include \</div><div class="line">        $(ANACONDA_HOME)/include/python2.7 \</div><div class="line">        $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include</div></pre></td></tr></table></figure></p>
+<p>使用 anaconda python 的library<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># We need to be able to find libpythonX.X.so or .dylib.</div><div class="line"># PYTHON_LIB := /usr/lib</div><div class="line">PYTHON_LIB := $(ANACONDA_HOME)/lib</div></pre></td></tr></table></figure></p>
+<p><strong>如果要編譯Matlab的接口，要在LIBRARY DIR這邊加入maci64的路徑，尤其各個路徑排列順序要對，如下所示</strong><br><strong>由於編譯會有找不到opencv的問題，故在INCLUDE DIR &amp; LIBRARY DIR 後面加上opencv3的路徑</strong></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"># Whatever else you find you need goes here.</div><div class="line"></div><div class="line">INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/local/Cellar/opencv3/3.2.0/include</div><div class="line">LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /Applications/MATLAB_R2016b.app/bin/maci64 /usr/lib /usr/local/Cellar/opencv3/3.2.0/lib</div></pre></td></tr></table></figure>
+<h3 id="編譯caffe"><a href="#編譯caffe" class="headerlink" title="編譯caffe"></a>編譯caffe</h3><p>修改完成後<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">make all -j4</div><div class="line">make test -j4</div><div class="line">make runtest -j4</div><div class="line">make matcaffe</div><div class="line">make mattest</div></pre></td></tr></table></figure></p>
+<hr>
+<h2 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h2><blockquote>
+<p>由於caffe 的dependency很多，建議找一個月內的教程來安裝，避免某一個dependency版本與caffe編譯衝突，小編依照半年前自己紀錄的教程來安裝，發現一堆坑，後來將boost版本改為1.59，用opencv2，才順利解決。<br>以下就稍微紀錄一些我遇到的問題。</p>
+</blockquote>
+<p><strong>編譯期間會有很多問題，只能慢慢google，並解決。</strong></p>
+<p>Runtest 可能會報錯<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">error：make runtest</div><div class="line"></div><div class="line">.build_release/tools/caffe</div><div class="line"></div><div class="line">dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib</div><div class="line"></div><div class="line">  Referenced from: /Users/work/gitclone/caffe/.build_release/tools/caffe</div><div class="line"></div><div class="line">  Reason: image not found</div><div class="line"></div><div class="line">make: *** [runtest] Abort trap: 6</div></pre></td></tr></table></figure></p>
+<p>原因是Library not loaded，需要手動加入，如下(需改為自己的路徑)<br><code>solution</code><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">install_name_tool -add_rpath &apos;/Users/junhao/anaconda/lib&apos;  /Users/junhao/gitclone/caffe/.build_release/tools/caffe</div></pre></td></tr></table></figure></p>
+<p>繼續出錯<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib</div><div class="line"></div><div class="line">  Referenced from: /Users/work/gitclone/caffe/.build_release/test/test_all.testbin</div><div class="line"></div><div class="line">  Reason: image not found</div><div class="line"></div><div class="line">make: *** [runtest] Abort trap: 6</div></pre></td></tr></table></figure></p>
+<p> 一樣的問題，再度手動加入<br><code>solution</code><br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">install_name_tool -add_rpath &apos;/Users/junhao/anaconda/lib&apos;  /Users/work/gitclone/caffe/.build_release/test/test_all.testbin</div></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATLAB is exiting because of fatal error</div><div class="line">/bin/sh: line 1: 14220 Killed: 9 /Applications/MATLAB_R2016b.app/bin/matlab -nodisplay -r &apos;caffe.run_tests(), exit()&apos;</div><div class="line">make: *** [mattest] Error 137</div></pre></td></tr></table></figure>
+<p>最後成功的<code>make runtest</code><br>再<code>make matcaffe</code><br>就成功了。</p>
 
-## Install Dependency
-至官網安裝anaconda 
-使用Homebrew 安裝library
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew install -vd snappy leveldb gflags glog szip lmdb</div><div class="line">brew tap homebrew/science</div><div class="line">brew install opencv3 hdf5</div><div class="line">brew link opencv3 --force</div></pre></td></tr></table></figure>
-
-_可以使用anaconda的 hdf5，不用brew install hdf5_
-更新：使用brew install hdf5 比較不會有link不到的問題
-\<p id="div-border-left-red" \=""> 「坑」opencv3 是keg only，記得要link\
-\</p><p id="div-border-left-yellow" \="">「坑」建議安裝1.59版本的boost，才能正常編譯 \
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew search boost </div><div class="line"></div><div class="line">    boost                              boost@1.55</div><div class="line">    boost-bcp                          boost@1.57</div><div class="line">    boost-build                        boost@1.59 ✔</div><div class="line">    boost-mpi                          boost@1.60</div><div class="line">    boost-python                       homebrew/science/boost-compute</div><div class="line">    boost-python@1.59 ✔</div><div class="line"> </div><div class="line">brew install --build-from-source -vd boost@1.59 boost-python@1.59 </div><div class="line">brew link --force boost@1.59 </div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line"></div><div class="line"></div><div class="line">Caffe中把某些依賴庫所在的文件夾名字限定為boost，可以將/usr/local/opt/boost@1.59，改名為/usr/local/opt/boost。</div></pre></td></tr></table></figure>
-
-brew install --build-from-source --with-python -vd protobuf
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">---- </div><div class="line"></div><div class="line">## Install Caffe</div></pre></td></tr></table></figure>
-
-cd (安裝目的地)
-git clone https://github.com/BVLC/caffe.git
-cd caffe
-cp Makefile.config.example Makefile.config
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">### 修改Makefile.config</div><div class="line">&gt; 注意這邊要修改的是`Makefile.config`，不是`Makefile.config.example`</div><div class="line">&gt; 打開 `Makefile.config`客製化編譯環境</div><div class="line"></div><div class="line">由於macbook沒有GPU，只用CPU跑，故要去掉cpu only的註解</div></pre></td></tr></table></figure>
-
-# CPU-only switch (uncomment to build without GPU support).  
-CPU_ONLY := 1  
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">**「坑」註解掉USE LEVELDB := 0 才不會在最後編譯matlab接口的時候出錯**</div></pre></td></tr></table></figure>
-
-# uncomment to disable IO dependencies and corresponding data layers
-
-# USE_OPENCV := 0
-USE_LEVELDB := 0
-# USE_LMDB := 0
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">使用opencv3，故要註解掉此行</div></pre></td></tr></table></figure>
-
-# Uncomment if you're using OpenCV 3
-OPENCV_VERSION := 3
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">有些教學會推薦使用openblas，或是用intel的MKL，但我這邊就用預設的，若有改變記得將BLAS:=改為自己使用的BLAS</div></pre></td></tr></table></figure>
-
-# BLAS choice:
-# atlas for ATLAS (default)
-# mkl for MKL
-# open for OpenBlas
-
-BLAS := atlas
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">去掉matlab註解，並修改matlab路徑，我是2016b</div></pre></td></tr></table></figure>
-
-MATLAB_DIR := /Applications/MATLAB_R2016b.app
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">因為要使用anaconda的python，所以這邊要去掉anaconda註解，並修改anaconda的正確安裝位置，並把原本的PYTHON INCLUDE註解掉，避免路徑衝突。</div></pre></td></tr></table></figure>
-
-# NOTE: this is required only if you will compile the python interface.
-# We need to be able to find Python.h and numpy/arrayobject.h.
-
-# PYTHON_INCLUDE := /usr/include/python2.7 \
-#       /usr/lib/python2.7/dist-packages/numpy/core/include
-
-ANACONDA_HOME := $(HOME)/anaconda
-PYTHON_INCLUDE := $(ANACONDA_HOME)/include \
-        $(ANACONDA_HOME)/include/python2.7 \
-        $(ANACONDA_HOME)/lib/python2.7/site-packages/numpy/core/include
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">使用 anaconda python 的library</div></pre></td></tr></table></figure>
-
-# We need to be able to find libpythonX.X.so or .dylib.
-# PYTHON_LIB := /usr/lib
-PYTHON_LIB := $(ANACONDA_HOME)/lib
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">**如果要編譯Matlab的接口，要在LIBRARY DIR這邊加入maci64的路徑，尤其各個路徑排列順序要對，如下所示**</div><div class="line">**由於編譯會有找不到opencv的問題，故在INCLUDE DIR &amp; LIBRARY DIR 後面加上opencv3的路徑**</div></pre></td></tr></table></figure>
-
-# Whatever else you find you need goes here.
-
-INCLUDE_DIRS := $(PYTHON_INCLUDE) /usr/local/include /usr/local/Cellar/opencv3/3.2.0/include
-LIBRARY_DIRS := $(PYTHON_LIB) /usr/local/lib /Applications/MATLAB_R2016b.app/bin/maci64 /usr/lib /usr/local/Cellar/opencv3/3.2.0/lib
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">### 編譯caffe</div><div class="line">修改完成後</div></pre></td></tr></table></figure>
-
-make all -j4
-make test -j4
-make runtest -j4
-make matcaffe
-make mattest
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">---- </div><div class="line"></div><div class="line">## FAQ</div><div class="line">&gt; 由於caffe 的dependency很多，建議找一個月內的教程來安裝，避免某一個dependency版本與caffe編譯衝突，小編依照半年前自己紀錄的教程來安裝，發現一堆坑，後來將boost版本改為1.59，用opencv2，才順利解決。</div><div class="line">&gt; 以下就稍微紀錄一些我遇到的問題。</div><div class="line">&gt; </div><div class="line"></div><div class="line">**編譯期間會有很多問題，只能慢慢google，並解決。**</div><div class="line"></div><div class="line">Runtest 可能會報錯</div></pre></td></tr></table></figure>
-
-error：make runtest
-
-.build_release/tools/caffe
-
-dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib
-
-  Referenced from: /Users/work/gitclone/caffe/.build_release/tools/caffe
-
-  Reason: image not found
-
-make: *** [runtest] Abort trap: 6
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">原因是Library not loaded，需要手動加入，如下(需改為自己的路徑)</div><div class="line">`solution`</div></pre></td></tr></table></figure>
-
-install_name_tool -add_rpath '/Users/junhao/anaconda/lib'  /Users/junhao/gitclone/caffe/.build_release/tools/caffe
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">繼續出錯</div></pre></td></tr></table></figure>
-
-dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib
-
-  Referenced from: /Users/work/gitclone/caffe/.build_release/test/test_all.testbin
-
-  Reason: image not found
-
-make: *** [runtest] Abort trap: 6
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"> 一樣的問題，再度手動加入</div><div class="line">`solution`</div></pre></td></tr></table></figure>
-
-install_name_tool -add_rpath '/Users/junhao/anaconda/lib'  /Users/work/gitclone/caffe/.build_release/test/test_all.testbin
-<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
-
-MATLAB is exiting because of fatal error
-/bin/sh: line 1: 14220 Killed: 9 /Applications/MATLAB_R2016b.app/bin/matlab -nodisplay -r 'caffe.run_tests(), exit()'
-make: *** [mattest] Error 137
-```
-
-最後成功的`make runtest`
-再`make matcaffe`
-就成功了。</p>
       
     </div>
 
@@ -566,8 +475,17 @@ make: *** [mattest] Error 137
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            本站概覽
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.gif"
@@ -611,6 +529,22 @@ make: *** [mattest] Error 137
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Install-Dependency"><span class="nav-number">1.1.</span> <span class="nav-text">Install Dependency</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU-only-switch-uncomment-to-build-without-GPU-support"><span class="nav-number">2.</span> <span class="nav-text">CPU-only switch (uncomment to build without GPU support).</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#編譯caffe"><span class="nav-number">2.0.1.</span> <span class="nav-text">編譯caffe</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#FAQ"><span class="nav-number">2.1.</span> <span class="nav-text">FAQ</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
