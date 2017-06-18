@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/17/macos10-12-anaconda-caffe-matlab/index.html">
 <meta property="og:site_name" content="Junhao.H">
 <meta property="og:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
-<meta property="og:updated_time" content="2017-06-18T21:07:54.000Z">
+<meta property="og:updated_time" content="2017-06-18T21:10:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos10.12 + caffe + matlab">
 <meta name="twitter:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
@@ -386,7 +386,7 @@
 <p>繼續出錯<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">dyld: Library not loaded: @rpath/libhdf5_hl.10.dylib</div><div class="line"></div><div class="line">  Referenced from: /Users/work/gitclone/caffe/.build_release/test/test_all.testbin</div><div class="line"></div><div class="line">  Reason: image not found</div><div class="line"></div><div class="line">make: *** [runtest] Abort trap: 6</div></pre></td></tr></table></figure></p>
 <p> 一樣的問題，再度手動加入<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">install_name_tool -add_rpath &apos;/Users/junhao/anaconda/lib&apos;  /Users/work/gitclone/caffe/.build_release/test/test_all.testbin</div></pre></td></tr></table></figure></p>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">MATLAB is exiting because of fatal error</div><div class="line">/bin/sh: line 1: 14220 Killed: 9 /Applications/MATLAB_R2016b.app/bin/matlab -nodisplay -r &apos;caffe.run_tests(), exit()&apos;</div><div class="line">make: *** [mattest] Error 137</div></pre></td></tr></table></figure>
-<p>把Make</p>
+<p>把Makefile.conig</p>
 <p>最後成功的<code>make runtest</code><br>再<code>make matcaffe</code><br>就成功了。</p>
 
       
