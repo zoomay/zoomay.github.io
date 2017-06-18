@@ -96,7 +96,7 @@
 <meta property="og:url" content="http://yoursite.com/2017/06/17/macos10-12-anaconda-caffe-matlab/index.html">
 <meta property="og:site_name" content="Junhao.H">
 <meta property="og:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
-<meta property="og:updated_time" content="2017-06-18T20:12:03.000Z">
+<meta property="og:updated_time" content="2017-06-18T20:12:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="macos10.12 + caffe + matlab">
 <meta name="twitter:description" content="Intro. 本篇blog紀錄在macOS10.12上，部署Caffe  build with Anaconda python2.7 , opencv3 and Matlab 2016b .">
@@ -362,11 +362,9 @@
 <a id="more"></a>
 <h2 id="Install-Dependency"><a href="#Install-Dependency" class="headerlink" title="Install Dependency"></a>Install Dependency</h2><p>至官網安裝anaconda<br>使用Homebrew 安裝library<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew install -vd snappy leveldb gflags glog szip lmdb</div><div class="line">brew tap homebrew/science</div><div class="line">brew install opencv3 hdf5</div><div class="line">brew link opencv3 --force</div></pre></td></tr></table></figure></p>
 <p><em>可以使用anaconda的 hdf5，不用brew install hdf5</em><br>更新：使用brew install hdf5 比較不會有link不到的問題</p>
-<blockquote>
 <p>\<span id="inline-purple" \="">这是颜色块标签\</span></p>
 <p>\</p><p id="div-border-left-red" \="">「坑」opencv3 是keg only，記得要link\</p>
 <p>\</p><p id="div-border-left-yellow" \="">「坑」建議安裝1.59版本的boost，才能正常編譯 \</p>
-</blockquote>
 <figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew search boost </div><div class="line"></div><div class="line">    boost                              boost@1.55</div><div class="line">    boost-bcp                          boost@1.57</div><div class="line">    boost-build                        boost@1.59 ✔</div><div class="line">    boost-mpi                          boost@1.60</div><div class="line">    boost-python                       homebrew/science/boost-compute</div><div class="line">    boost-python@1.59 ✔</div><div class="line"> </div><div class="line">brew install --build-from-source -vd boost@1.59 boost-python@1.59 </div><div class="line">brew link --force boost@1.59 </div><div class="line">&#123;% endcodeblock %&#125;</div><div class="line"></div><div class="line"></div><div class="line">Caffe中把某些依賴庫所在的文件夾名字限定為boost，可以將/usr/local/opt/boost@1.59，改名為/usr/local/opt/boost。</div></pre></td></tr></table></figure>
 <p>brew install –build-from-source –with-python -vd protobuf<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line"></div><div class="line">---- </div><div class="line"></div><div class="line">## Install Caffe</div></pre></td></tr></table></figure></p>
 <p>cd (安裝目的地)<br>git clone <a href="https://github.com/BVLC/caffe.git" target="_blank" rel="external">https://github.com/BVLC/caffe.git</a><br>cd caffe<br>cp Makefile.config.example Makefile.config<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line"></div><div class="line">### 修改Makefile.config</div><div class="line">&gt; 注意這邊要修改的是`Makefile.config`，不是`Makefile.config.example`</div><div class="line">&gt; 打開 `Makefile.config`客製化編譯環境</div><div class="line"></div><div class="line">由於macbook沒有GPU，只用CPU跑，故要去掉cpu only的註解</div></pre></td></tr></table></figure></p>
