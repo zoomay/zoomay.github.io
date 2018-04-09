@@ -90,16 +90,16 @@
 
 
 
-<meta name="description" content="Intro. 本篇blog紀錄在mac中，使用XeLaTex編譯台大論文安裝環境：Sublime 3、MacTex在最新的Mac版的Sublime 3中，Latextools是已經安裝好的。相對於之前的版本，安裝過程已經非常簡單，以下做一個紀錄。  ~~">
+<meta name="description" content="Intro. 本篇blog紀錄在mac中，使用XeLaTex編譯台大論文安裝環境：Sublime 3、MacTex在最新的Mac版的Sublime 3中，Latextools是已經安裝好的。相對於之前的版本，安裝過程已經非常簡單，以下做一個紀錄。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="在Mac使用XeLaTex編譯台大論文">
-<meta property="og:url" content="http://yoursite.com/2018/04/09/在Mac使用XeLaTex編譯台大論文/index.html">
+<meta property="og:url" content="http://yoursite.com/2017/06/17/在Mac使用XeLaTex編譯台大論文/index.html">
 <meta property="og:site_name" content="Junhao.H">
-<meta property="og:description" content="Intro. 本篇blog紀錄在mac中，使用XeLaTex編譯台大論文安裝環境：Sublime 3、MacTex在最新的Mac版的Sublime 3中，Latextools是已經安裝好的。相對於之前的版本，安裝過程已經非常簡單，以下做一個紀錄。  ~~">
-<meta property="og:updated_time" content="2018-04-09T09:12:08.000Z">
+<meta property="og:description" content="Intro. 本篇blog紀錄在mac中，使用XeLaTex編譯台大論文安裝環境：Sublime 3、MacTex在最新的Mac版的Sublime 3中，Latextools是已經安裝好的。相對於之前的版本，安裝過程已經非常簡單，以下做一個紀錄。">
+<meta property="og:updated_time" content="2018-04-09T09:17:36.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="在Mac使用XeLaTex編譯台大論文">
-<meta name="twitter:description" content="Intro. 本篇blog紀錄在mac中，使用XeLaTex編譯台大論文安裝環境：Sublime 3、MacTex在最新的Mac版的Sublime 3中，Latextools是已經安裝好的。相對於之前的版本，安裝過程已經非常簡單，以下做一個紀錄。  ~~">
+<meta name="twitter:description" content="Intro. 本篇blog紀錄在mac中，使用XeLaTex編譯台大論文安裝環境：Sublime 3、MacTex在最新的Mac版的Sublime 3中，Latextools是已經安裝好的。相對於之前的版本，安裝過程已經非常簡單，以下做一個紀錄。">
 
 
 
@@ -127,7 +127,7 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/04/09/在Mac使用XeLaTex編譯台大論文/"/>
+  <link rel="canonical" href="http://yoursite.com/2017/06/17/在Mac使用XeLaTex編譯台大論文/"/>
 
 
 
@@ -284,7 +284,7 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/04/09/在Mac使用XeLaTex編譯台大論文/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/06/17/在Mac使用XeLaTex編譯台大論文/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Junhao Huang">
@@ -313,8 +313,8 @@
               
                 <span class="post-meta-item-text">發表於</span>
               
-              <time title="創建於" itemprop="dateCreated datePublished" datetime="2018-04-09T17:10:13+08:00">
-                2018-04-09
+              <time title="創建於" itemprop="dateCreated datePublished" datetime="2017-06-17T15:02:22+08:00">
+                2017-06-17
               </time>
             
 
@@ -358,14 +358,18 @@
         <h1 id="Intro"><a href="#Intro" class="headerlink" title="Intro."></a>Intro.</h1><blockquote>
 <p>本篇blog紀錄在mac中，使用XeLaTex編譯台大論文<br>安裝環境：Sublime 3、MacTex<br>在最新的Mac版的Sublime 3中，Latextools是已經安裝好的。<br>相對於之前的版本，安裝過程已經非常簡單，以下做一個紀錄。</p>
 </blockquote>
-<p>~~ <a id="more"></a></p>
-<p>解決漢化問題很簡單：先在文件開始加：%!TEX program = xelatex<br>同時調用package就可以了： \usepackage[UTF8]{ctex}</p>
-<h2 id="安裝MacTex"><a href="#安裝MacTex" class="headerlink" title="安裝MacTex"></a>安裝MacTex</h2><p>~~<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">~~brew update</div><div class="line">~~brew cask install mactex</div><div class="line">~~</div></pre></td></tr></table></figure></p>
-<h2 id="Sublime-Text3"><a href="#Sublime-Text3" class="headerlink" title="Sublime Text3"></a>Sublime Text3</h2><p>在此先預設各位碼農的macbook中都以自帶Sublime ＾＾<br>另外，Sublime需要安裝package control來安裝 { LaTeXTools plugin }套件。<br>~~<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">~~Type: command + shift + p</div><div class="line">~~Type: install package </div><div class="line">~~Type: latextools plugin</div><div class="line">~~</div></pre></td></tr></table></figure></p>
-<p>###使用Mac自帶的preview作為PDF預覽程式<br>Sublime —&gt;Preferences —&gt;Package Settings —&gt;LaTeXTools —&gt;Settings-User<br>會開啟LaTexTools.sublime-settings，<br>找到”viewer “: “”改成：<br>‘’ “viewer”: “preview”,</p>
-<h3 id="Install-skim-不想用preview的人選用"><a href="#Install-skim-不想用preview的人選用" class="headerlink" title="Install skim (不想用preview的人選用)"></a>Install skim (不想用preview的人選用)</h3><pre><code>~~ brew cask install skim
-</code></pre><h2 id="下載台大模板"><a href="#下載台大模板" class="headerlink" title="下載台大模板"></a>下載台大模板</h2><p>~~<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">~~cd downloads</div><div class="line">~~git clone https://github.com/tzhuan/ntu-thesis.git</div><div class="line">~~</div></pre></td></tr></table></figure></p>
-<p>修改 thesis.tex 文件<br>第一行 加上<code>%!TEX program = xelatex</code><br>將<code>\setCJKmainfont{標楷體}</code> 改成 <code>\setCJKmainfont{BiauKai}</code><br>然後編譯thesis.tex 這個文件，就會生成論文了。<br>~~ </p><p id="div-border-left-red">「TIPS」先存檔在編譯，壹定要先存檔 </p><p></p>
+<a id="more"></a>
+<p>解決漢化問題很簡單：先在文件開始加：%!TEX program = xelatex<br>同時調用package就可以了： \usepackage<a href="">UTF8</a>{ctex}</p>
+<h2 id="安裝MacTex"><a href="#安裝MacTex" class="headerlink" title="安裝MacTex"></a>安裝MacTex</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">brew update</div><div class="line">brew cask install mactex</div></pre></td></tr></table></figure>
+<h2 id="Sublime-Text3"><a href="#Sublime-Text3" class="headerlink" title="Sublime Text3"></a>Sublime Text3</h2><p>在此先預設各位碼農的macbook中都以自帶Sublime ＾＾<br>另外，Sublime需要安裝package control來安裝 { LaTeXTools plugin }套件。<br><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Type: command + shift + p</div><div class="line">Type: install package </div><div class="line">Type: latextools plugin</div></pre></td></tr></table></figure></p>
+<h3 id="使用Mac自帶的preview作為PDF預覽程式"><a href="#使用Mac自帶的preview作為PDF預覽程式" class="headerlink" title="使用Mac自帶的preview作為PDF預覽程式"></a>使用Mac自帶的preview作為PDF預覽程式</h3><p>Sublime —>Preferences —>Package Settings —>LaTeXTools —>Settings-User<br>會開啟LaTexTools.sublime-settings，<br>找到”viewer “: “”改成：<br>    “viewer”: “preview”,</p>
+<h3 id="Install-skim-不想用preview的人選用"><a href="#Install-skim-不想用preview的人選用" class="headerlink" title="Install skim (不想用preview的人選用)"></a>Install skim (不想用preview的人選用)</h3><p>brew cask install skim</p>
+<h2 id="下載台大模板"><a href="#下載台大模板" class="headerlink" title="下載台大模板"></a>下載台大模板</h2><figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">cd downloads</div><div class="line">git clone https://github.com/tzhuan/ntu-thesis.git</div></pre></td></tr></table></figure>
+<p>修改 thesis.tex 文件<br>第一行 加上<code>%!TEX program = xelatex</code><br>將<code>\setCJKmainfont{標楷體}</code> 改成 <code>\setCJKmainfont{BiauKai}</code><br>然後編譯thesis.tex 這個文件，就會生成論文了。</p>
+<p id="div-border-left-red">「TIPS」先存檔在編譯，壹定要先存檔 </p>
+
+
+
 
       
     </div>
@@ -402,8 +406,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/06/17/macos10-12-anaconda-caffe-matlab/" rel="next" title="macos10.12 + caffe + matlab">
-                <i class="fa fa-chevron-left"></i> macos10.12 + caffe + matlab
+              <a href="/2017/05/23/AWS-DIGITS-14-04/" rel="next" title="AWS + DIGITS + ubuntu14.04">
+                <i class="fa fa-chevron-left"></i> AWS + DIGITS + ubuntu14.04
               </a>
             
           </div>
@@ -411,6 +415,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/06/17/macos10-12-anaconda-caffe-matlab/" rel="prev" title="macos10.12 + caffe + matlab">
+                macos10.12 + caffe + matlab <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -521,7 +529,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝MacTex"><span class="nav-number">1.1.</span> <span class="nav-text">安裝MacTex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sublime-Text3"><span class="nav-number">1.2.</span> <span class="nav-text">Sublime Text3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-skim-不想用preview的人選用"><span class="nav-number">1.2.1.</span> <span class="nav-text">Install skim (不想用preview的人選用)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下載台大模板"><span class="nav-number">1.3.</span> <span class="nav-text">下載台大模板</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Intro"><span class="nav-number">1.</span> <span class="nav-text">Intro.</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝MacTex"><span class="nav-number">1.1.</span> <span class="nav-text">安裝MacTex</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Sublime-Text3"><span class="nav-number">1.2.</span> <span class="nav-text">Sublime Text3</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#使用Mac自帶的preview作為PDF預覽程式"><span class="nav-number">1.2.1.</span> <span class="nav-text">使用Mac自帶的preview作為PDF預覽程式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Install-skim-不想用preview的人選用"><span class="nav-number">1.2.2.</span> <span class="nav-text">Install skim (不想用preview的人選用)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#下載台大模板"><span class="nav-number">1.3.</span> <span class="nav-text">下載台大模板</span></a></li></ol></li></ol></div>
             
 
           </div>
